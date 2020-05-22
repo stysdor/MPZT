@@ -1,0 +1,43 @@
+﻿@model MPZT.GUI.Models.AreaProjectModel
+@{
+    TempData["model"] = Model;
+}
+
+<div class="area-title">
+    <h2 class="area-title">@Model.Area.Name</h2>
+    <div class="area-info">
+        <div class="area-info">Konsultacje: @Model.Area.ConsultationTime.ToString("dd/MM HH:mm")</div>
+        <div class="area-info area-info-right pull-right">Data zakończenie konsultacji: @Model.Area.ExpirationDate.ToString("dd/MM")</div>
+    </div>
+</div>
+
+<div class="card card-proposal-add" id="add-proposal">
+    @Html.ActionLink("Dodaj komentarz!", "AddComment", "Project", Model.Area.Id, new { @class = "btn overlap add", @id = "add-proposal" })
+</div>
+
+<div class="card card-proposal">
+    <div class="card-header">Projekt #@Model.Project.Number</div>
+    <div class="card-subtitle">Projekt</div>
+    <div class="card-text">@Model.Project.Description</div>
+    <hr />
+    @Html.LabelFor(x => x.Project.Files)
+    <ul class="list-group">
+        @foreach (var file in Model.Project.Files)
+        {
+            //@Html.ActionLink(file, "FileDisplay", "Project", file);
+            <li class="list-group-item">
+                <a href="@(Url.Content("~/Uploads/" + Model.Project.Id + "/" + file.NameFile))">@file.NameFile</a>
+            </li>
+        }
+    </ul>
+</div>
+@Html.LabelFor(x => x.Comments, new { @id = "comment-title"})
+@foreach (var comment in Model.Comments)
+{
+    <div class="card card-proposal">
+        <div class="card-text">@comment.Content</div>
+        <div class="card-footer"> ~@comment.UserName </div>
+    </div>
+}
+
+

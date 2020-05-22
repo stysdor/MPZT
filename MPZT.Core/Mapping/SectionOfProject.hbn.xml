@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="MPZT.Core.Domain" assembly="MPZT.Core" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="SectionOfProject" table="SectionOfProject">
+    <id name="Id" column="Id" type="Int32">
+      <generator class="native" />
+    </id>
+    <property name="Content" type="String" column="Name" length="max" />
+    <property name="Number" type="String" column="Name" length="255" />
+    <one-to-one name="ProjectMPZT" class="MPZT.Core.Domain.ProjectMPZT" column="ProjectMPZTId" fetch="select" lazy="false" cascade="none"/>
+  </class>
+</hibernate-mapping>
+

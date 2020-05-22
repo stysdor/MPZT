@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="MPZT.Core.Domain" assembly="MPZT.Core" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Location" table="Locations">
+    <id name="Id" column="Id" type="Int32">
+      <generator class="native" />
+    </id>
+    <property name="Country" type="String" column="Country" length="255" />
+    <property name="Wojewodztwo" type="String" column="Wojewodztwo" length="255" />
+    <property name="Powiat" type="String" column="Powiat" length="255" />
+    <property name="Gmina" type="String" column="Gmina" length="255" />
+    <property name="City" type="String" column="City" length="255" />
+    <property name="Dzielnica" type="String" column="Dzielnica" length="255" />
+    <property name="Street" type="String" column="Street" length="255" />
+    <property name="NrLand" type="String" column="NrLand" length="255" />
+  </class>
+</hibernate-mapping>

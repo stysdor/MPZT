@@ -1,0 +1,67 @@
+﻿@model List<MPZT.GUI.Models.AreaModel>
+
+<h2 class="area-title">Lista aktualnie opracowywanych planów</h2>
+
+<table class="table">
+    <thead>
+        <tr class="text-center">
+            <td>Nazwa</td>
+            <td>Lokalizacja</td>
+            <td>Termin konsultacji</td>
+            <td>Termin zakończenia postępowania</td>
+            <td>Faza</td>
+            <td></td>
+        </tr>
+    </thead>
+
+    <tbody class="list-areas">
+        @foreach (var item in Model)
+        {
+            <tr id="@item.Id" class="@item.PhaseId link-view-detail">
+                <td class="area-name">@item.Name</td>
+                <td>
+                    @{
+                        if (!string.IsNullOrEmpty(item.Location.Street))
+                        {
+                            @Html.Raw("ul. " + item.Location.Street);
+                        }
+                        if (!string.IsNullOrEmpty(item.Location.Dzielnica))
+                        {
+                            @Html.Raw(", " + item.Location.Dzielnica);
+                        }
+                        if (!string.IsNullOrEmpty(item.Location.City))
+                        {
+                            @Html.Raw(", m. " + item.Location.City);
+                        }
+                        if (!string.IsNullOrEmpty(item.Location.Gmina))
+                        {
+                            @Html.Raw(", gm. " + item.Location.Gmina);
+                        }
+                        if (!string.IsNullOrEmpty(item.Location.Powiat))
+                        {
+                            @Html.Raw(", pow. " + item.Location.Powiat);
+                        }
+                        if (!string.IsNullOrEmpty(item.Location.Wojewodztwo))
+                        {
+                            @Html.Raw(", woj. " + item.Location.Wojewodztwo);
+                        }
+                    }
+                </td>
+                <td>@item.ConsultationTime.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@item.ExpirationDate.ToString("dd/MM/yyyy")</td>
+                <td>
+                    @{
+                        @Html.Raw((MPZT.GUI.Models.AreaModel.Phase)item.PhaseId);
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Zobacz szczegóły", "ViewDetails", item)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

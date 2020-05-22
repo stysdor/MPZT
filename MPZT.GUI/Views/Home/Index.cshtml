@@ -1,0 +1,36 @@
+﻿
+
+    <div class="jumbotron text-center">
+        <h2>Sprawdź, gdzie w okolicy opracowywany jest plan MPZT!</h2>
+        <img id="home-img" src="~/Content/img/map.png" alt="mapa" />
+    </div>
+
+    <p id="overlaps">
+        <a class="btn overlap" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">
+            Szukaj na postawie lokalizacji
+        </a>
+        <a class="btn overlap" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+            Szukaj na podstawie współrzędnych geograficznych
+        </a>
+    </p>
+    <div class="accordion" id="accordionSearch">
+        <div class="card">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSearch">
+                <div class="card-body">
+                    @Html.Partial("_LocationForm", new MPZT.GUI.Models.LocationModel())
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSearch">
+                <div class="card-body">
+                    @Html.Partial("_GeoPointForm", new MPZT.GUI.Models.GeoPointSearchModel())
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+

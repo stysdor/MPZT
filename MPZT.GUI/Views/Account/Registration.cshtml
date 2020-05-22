@@ -1,0 +1,85 @@
+﻿@model MPZT.GUI.Models.Registration
+@{
+    ViewBag.Title = "Registration";
+}
+
+@using (Html.BeginForm(null, null, new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="form-sigin">
+            <h4>Rejestracja</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="form-label-group">
+                    @Html.LabelFor(model => model.Login, new { htmlAttribute = new { @class = "control-label col-md-2" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-label-group">
+                    @Html.LabelFor(model => model.Name, new { htmlAttribute = new { @class = "control-label col-md-2" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-label-group">
+                    @Html.LabelFor(model => model.Surname, new { htmlAttribute = new { @class = "control-label col-md-2" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-label-group">
+                    @Html.LabelFor(model => model.Email, new { htmlAttribute = new { @class = "control-label col-md-2" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-label-group">
+                    @Html.LabelFor(model => model.Password, new { htmlAttribute = new { @class = "control-label col-md-2" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-label-group">
+                    @Html.LabelFor(model => model.ConfirmedPassword, new { htmlAttribute = new { @class = "control-label col-md-2" } })
+                </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ConfirmedPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmedPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Zarejestruj się" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

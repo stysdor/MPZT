@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="MPZT.Core.Domain" assembly="MPZT.Core" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Proposal" table="Proposals">
+    <id name="Id" column="Id" type="Int32">
+      <generator class="native" />
+    </id>
+    <property name="Description" type="string" column="Description" length="max" />
+    <property name="AverageNote" type="double" column="AverageNote" />
+    <many-to-one name="User" class="MPZT.Core.Domain.User" column="UserId" fetch="select" lazy="false" cascade="none"/>
+    <many-to-one name="ConceptMPZT" class="MPZT.Core.Domain.ConceptMPZT" column="ConceptMPZTId" fetch="select" lazy="false" cascade="none"/>
+  </class>
+</hibernate-mapping>

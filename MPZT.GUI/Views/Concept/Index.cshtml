@@ -1,0 +1,37 @@
+﻿@model MPZT.GUI.Models.AreaProposalsModel
+@{
+    TempData["model"] = Model;
+}
+
+<div class="area-title">
+    <h2 class="area-title">@Model.Area.Name</h2>
+    <div class="area-info">
+        <div class="area-info">Konsultacje: @Model.Area.ConsultationTime.ToString("dd/MM HH:mm")</div>
+        <div class="area-info area-info-right pull-right">Data zakończenie konsultacji: @Model.Area.ExpirationDate.ToString("dd/MM")</div>
+    </div>
+</div>
+
+<div class="card card-proposal-add" id="add-proposal">
+    @Html.ActionLink("Dodaj swoją propozycję!","AddProposal","Concept", Model.Area.Id, new { @class = "btn overlap add", @id="add-proposal"})
+</div>
+
+@foreach (var item in Model.Proposals)
+{
+<div class="card card-proposal">
+    <div class="card-header">Propozycja #@item.Id</div>
+    <div class="card-subtitle">Koncepcja</div>
+    <div class="card-text">@item.Description</div>
+    <div class="card-footer"> ~@item.UserName </div>
+    <div class="notes">
+        <a href="@Url.Action("AddLikes","Concept", item)">
+                <i class="fa fa-thumbs-o-up"></i><span class="badge" id="likes">@item.Likes</span>
+        </a>
+        <a href="@Url.Action("AddDislikes","Concept", item)">
+                <i class="fa fa-thumbs-o-down"></i><span class="badge" id="dislikes">@item.Dislikes</span>
+         </a>
+    </div>
+
+</div>
+
+}
+

@@ -1,0 +1,41 @@
+﻿@model MPZT.GUI.Models.AreaModel
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Dodaj plan tworzenia miejscowego planu zagospodarowania terenu:
+    </div>
+    <div class="panel-body">
+        @using (var form = Html.BeginForm("AddArea", "Area", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.Id)
+            <div class="form-group row">
+                @Html.LabelFor(x => x.Name, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control col-sm" })
+                    @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary pull-right" type="submit">Dodaj</button>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script>
+    var url = 'GeoPoint';
+    var form = $('form');
+    var geopoints = $('#geopoints');
+    $('#add').click(function () {
+        $.get(url, function (response) {
+            geopoints.append(response);
+        });
+    });
+
+</script>
+
+
+

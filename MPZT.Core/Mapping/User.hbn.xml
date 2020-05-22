@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="MPZT.Core.Domain" assembly="MPZT.Core" xmlns="urn:nhibernate-mapping-2.2">
+<class name="User" table="Users">
+<id name="Id" column="Id" type="Int32">
+<generator class="native" />
+</id>
+<property name="Name" type="String" column="Name" length="255" />
+<property name="Surname" type="String" column="Surname" length="255" />
+<property name="Password" type="String" column="Password" length="255" />
+<property name="Email" type="String" column="Email" length="255" />
+<property name="Login" type="String" column="Login" length="255" />
+<property name="ConfirmedEmail" type="Boolean" column="ConfirmedEmail" length="255" />
+
+  <set name="Roles" table="UserRoles" lazy="true">
+    <key>
+      <column name="UserId" not-null="true" />
+    </key>
+    <many-to-many class="Role">
+      <column name="UserId" not-null="true" />
+    </many-to-many>
+  </set>
+
+  <subclass name="OfficeMember">
+    <many-to-one name="Office" class="MPZT.Core.Domain.Office" column="OfficeId" fetch="select" lazy="false" cascade="none"/>
+  </subclass>
+  
+</class>
+</hibernate-mapping>

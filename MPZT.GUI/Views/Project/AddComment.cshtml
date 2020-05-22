@@ -1,0 +1,31 @@
+﻿@model MPZT.GUI.Models.CommentModel
+@{
+    ViewBag.Title = "Dodaj swój komentarz";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Dodaj swój komentarz:
+    </div>
+    <div class="panel-body">
+        @using (var form = Html.BeginForm("AddComment", "Project", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.ProjectId)
+            @Html.HiddenFor(x => x.UserId)
+            <div class="form-group row">
+                @Html.LabelFor(x => x.Content, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.Content, new { @class = "form-control ", rows = "15" })
+                    @Html.ValidationMessageFor(x => x.Content, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary pull-right" type="submit">Dodaj</button>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

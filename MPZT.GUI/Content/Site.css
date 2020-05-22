@@ -1,0 +1,234 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;700&display=swap');
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color:#f4f8fa; 
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#topbar.navbar.navbar-inverse.navbar-fixed-top {
+    background-color: #3f4351;
+    color: #a6adb6;
+    border-top: 2px solid #2484fb;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container > .navbar-header > .navbar-brand {
+    font-family: 'Roboto Slab', serif;
+    color: #fff;
+}
+
+/* Set map */
+#map {
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 350px;
+    width: 600px;
+}
+
+#geoPoints  {
+    display: table;
+    width: 100%;
+}
+table td[class*=col-], table th[class*=col-] {
+    position: static;
+    display: table-cell;
+    float: none;
+}
+
+/*****Style top nav *****/
+.jumbotron h2 {
+    font-family: 'Roboto Slab', serif;
+}
+.jumbotron #home-img {
+    width: 250px;
+}
+#overlaps a.btn.overlap {
+    color: #3f4351;
+    width: 100%;
+    background-color: #ededed;
+    font-family: 'Open Sans', sans-serif;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: all ease .2s;
+}
+
+#overlaps a.btn.overlap:hover {
+    color: #000;
+    -webkit-box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    -moz-box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+}
+
+    #overlaps a.btn.overlap[aria-expanded="true"] {
+        background-color: #3f4351;
+        color: #a6adb6;
+    }
+
+/********Style list of areas**********/
+tbody tr[class="1 link-view-detail"] {
+    background-color: #8be8b2;
+    color: #fff;
+}
+tbody tr[class="2 link-view-detail"] {
+    background-color: #8bd7e8;
+    color: #fff;
+}
+
+tbody.list-areas tr.link-view-detail {
+    transition: all ease .2s;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+tbody.list-areas tr.link-view-detail:hover {
+    background-color: #ededed;
+    -webkit-box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    -moz-box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    cursor: pointer;
+    color: #a6adb6;
+}
+    tbody.list-areas tr.link-view-detail > td > a {
+        color: #fff;
+    }
+.table thead tr {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+div.area-title {
+    background-color: #ededed;
+    color: #3f4351;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 30px;
+}
+h2.area-title {
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+div.card.card-proposal {
+    padding: 20px;
+    background-color: #ededed;
+    margin-top: 20px;
+}
+
+.card-header {
+    font-weight: 700;
+}
+.card-subtitle {
+    color: grey;
+    font-style: italic;
+}
+.card-text {
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.card-footer 
+{
+    font-style: italic;
+    color: grey;
+}
+.area-info {
+    color: grey;
+    font-style: italic;
+    display: inline;
+    padding-bottom: 10px;
+}
+
+.area-info-right {
+    text-align: right;
+}
+
+.card.card-proposal-add {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#add-proposal.card-proposal-add > #add-proposal.add {
+    background-color: #3f4351;
+    color: #a6adb6;
+    width: 100%;
+    padding: 10px;
+}
+
+#add-proposal.card-proposal-add > #add-proposal.add:hover {
+    color: #fff;
+    -webkit-box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    -moz-box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    cursor: pointer;
+}
+
+div.card-proposal > div.notes {
+    text-align: right;
+    color: black;
+}
+
+div.card-proposal > div.notes a {
+    color: black;
+}
+
+#comment-title {
+    padding: 10px;
+    margin-top: 10px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#likes.badge {
+    background-color: darkgreen;
+    margin-right: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+#dislikes.badge {
+    background-color: darkred;
+    margin-right: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.notes > a > i.fa {
+font-size: 16px;
+
+}
+.notes > a {
+    margin: 5px;
+    padding: 10px;
+    transition: all ease .2s;
+}
+.notes > a:hover {
+    -webkit-box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    -moz-box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+    box-shadow: 0 0 10px 0 rgba(173,173,173,0.7);
+}
+
+
+
+
+

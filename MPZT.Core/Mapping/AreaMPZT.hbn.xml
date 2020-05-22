@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="MPZT.Core.Domain" assembly="MPZT.Core" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="AreaMPZT" table="AreaMPZT">
+    <id name="Id" column="Id" type="Int32">
+      <generator class="native" />
+    </id>
+    <property name="Name" type="String" column="Name" />
+    <property name="ConsultationTime" type="System.DateTime" column="ConsultationTime" insert="true" update="false"/>
+    <property name="ExpirationDate" type="System.DateTime" column="ExpirationDate" insert="true" update="false" />
+    <one-to-one name="Location" class="MPZT.Core.Domain.Location" column="LocationId" fetch="select" lazy="false" cascade="none"/>
+    <one-to-one name="Office" class="MPZT.Core.Domain.Office" column="OfficeId" fetch="select" lazy="false" cascade="none"/>
+    <one-to-one name="Phase" class="MPZT.Core.Domain.Phase" column="PhaseId" fetch="select" lazy="false" cascade="none"/>
+
+    <list name="GeoPoints" table="AreaMPZTGeopoints" lazy="true">
+      <key>
+        <column name="AreaMPZTId" not-null="true" />
+      </key>
+      <many-to-one class="GeoPoint">
+        <column name="GeoPointId" not-null="true" />
+      </many-to-one>
+    </list>
+    
+  </class>
+</hibernate-mapping>
+ 
