@@ -59,17 +59,23 @@ namespace MPZT.GUI.Controllers
                         Response.Cookies.Add(faCookie);
                     }
 
-                    if (Url.IsLocalUrl(ReturnUrl))
-                    {
-                        return Redirect(ReturnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index");
-                    }
+                    return RedirectToLocal(ReturnUrl);
                 }
             }
+            ModelState.AddModelError("", "Login lub hasło nieprawidłowe");
             return View("Index", loginView);
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl) && !string.IsNullOrEmpty(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult LogOut()

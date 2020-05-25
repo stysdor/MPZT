@@ -47,7 +47,7 @@ namespace MPZT.GUI.Logic
                 UserName = username,
                 Password = password
             };
-            var isValidate = new ApiClient().PostData<UserDto, bool>("api/account/PostValidation", user);
+            bool isValidate = new ApiClient().PostData<UserDto, bool>("api/account/PostValidation", user);
             return isValidate;
         }
         

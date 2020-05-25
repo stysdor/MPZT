@@ -18,18 +18,21 @@ namespace MPZT.Api.Controllers
             _userService = userService;
         }
 
+        [Route("api/account/PostValidation")]
         [HttpPost]
         public IHttpActionResult PostValidation([FromBody] UserDto user)
         {
             return Json(_userService.ValidateUser(user.UserName, user.Password));
         }
 
+        [Route("api/account/GetUser/{userName}")]
         [HttpGet]
-        public IHttpActionResult GetUser(UserDto user)
+        public IHttpActionResult GetUser(string userName)
         {
-            return Json(_userService.GetUser(user.UserName));
+            return Json(_userService.GetUser(userName));
         }
 
+        [Route("api/account/GetRolesForUser/{userName}")]
         [HttpGet]
         public IHttpActionResult GetRolesForUser(string userName)
         {

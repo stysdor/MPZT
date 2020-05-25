@@ -21,7 +21,7 @@ namespace MPZT.Infrustructure.Repositories
 
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
             {
-                var sql = $"SELECT Password FROM Users WHERE UserName = {userName}";
+                var sql = $"SELECT Password FROM Users WHERE UserName = '{userName}'";
                 db.Open();
                 var pass = db.Query<string>(sql).SingleOrDefault();
                 if (!(pass == null) && string.Equals(pass,password))
@@ -38,7 +38,7 @@ namespace MPZT.Infrustructure.Repositories
 
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
             {
-                var sql = $"SELECT * FROM Users WHERE UserName = {userName}";
+                var sql = $"SELECT * FROM Users WHERE UserName = '{userName}'";
                 db.Open();
                 user = db.Query<User>(sql).SingleOrDefault();
             }
@@ -51,7 +51,7 @@ namespace MPZT.Infrustructure.Repositories
 
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
             {
-                var sql = $"SELECT * FROM Users AS U  INNER JOIN UserRoles AS UR ON U.Id = UR.IdUser INNER JOIN Roles AS R ON R.Id = UR.IdRole WHERE U.UserName = {userName}";
+                var sql = $"SELECT * FROM Users AS U  INNER JOIN UserRoles AS UR ON U.Id = UR.IdUser INNER JOIN Roles AS R ON R.Id = UR.IdRole WHERE U.UserName = '{userName}'";
                 db.Open();
                 roles = db.Query<Role>(sql).ToList();
             }

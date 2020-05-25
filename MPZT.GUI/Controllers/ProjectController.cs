@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MPZT.GUI.CustomAuthentication;
 using MPZT.GUI.Logic;
 using MPZT.GUI.Models;
 using MPZT.Infrustructure.ModelDto;
@@ -53,6 +54,7 @@ namespace MPZT.GUI.Controllers
             return View("Index");   
         }
 
+        [CustomAuthorize(Roles = "User")]
         [HttpGet]
         public ActionResult AddComment()
         {
@@ -66,6 +68,7 @@ namespace MPZT.GUI.Controllers
             return View(model);
         }
 
+        [CustomAuthorize(Roles = "User")]
         [HttpPost]
         public ActionResult AddComment(CommentModel model)
         {

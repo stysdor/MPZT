@@ -40,6 +40,7 @@ namespace MPZT.GUI.Controllers
             return View("Index",model);
         }
 
+        [CustomAuthorize(Roles = "User")]
         public ActionResult AddLikes(ProposalModel item)
         {
             AreaProposalsModel model = (AreaProposalsModel)TempData["model"];
@@ -52,6 +53,7 @@ namespace MPZT.GUI.Controllers
             return View("Index", model);
         }
 
+        [CustomAuthorize(Roles = "User")]
         public ActionResult AddDislikes(ProposalModel item)
         {
             AreaProposalsModel model = (AreaProposalsModel)TempData["model"];
@@ -64,7 +66,7 @@ namespace MPZT.GUI.Controllers
             return View("Index", model);
         }
 
-        //[CustomAuthorize(Roles = "user")]
+        [CustomAuthorize(Roles = "User")]
         [HttpGet]
         public ActionResult AddProposal()
         {
@@ -78,6 +80,7 @@ namespace MPZT.GUI.Controllers
             return View(model);
         }
 
+        [CustomAuthorize(Roles = "User")]
         [HttpPost]
         public ActionResult AddProposal(ProposalModel model)
         {

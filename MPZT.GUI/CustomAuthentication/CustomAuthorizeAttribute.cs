@@ -15,12 +15,19 @@ namespace MPZT.GUI.CustomAuthentication
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            return ((CurrentUser == null || CurrentUser.IsInRole(Roles)) && CurrentUser != null);
+            return ((CurrentUser != null && !CurrentUser.IsInRole(Roles)) || CurrentUser == null) ? false : true;
         }
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             RedirectToRouteResult routeData = null;
+
+            var request = filterContext.HttpContext.Request;
+            string returnUrl ="";
+
+            // Get return url if it exist
+            if (request.HttpMethod.Equals("GET", System.StringComparison.CurrentCultureIgnoreCase))
+                returnUrl = request.RawUrl;
 
             if (CurrentUser == null)
             {
@@ -28,10 +35,21 @@ namespace MPZT.GUI.CustomAuthentication
                     (new System.Web.Routing.RouteValueDictionary
                     (new
                     {
-                        controller = "Error",
-                        action = "AccessDenied"
+                        controller = "Account",
+                        action = "Login",
+                        ReturnUrl = returnUrl
                     }
                     ));
+            }
+            else
+            {
+                routeData = new RedirectToRouteResult
+                    (new System.Web.Routing.RouteValueDictionary
+                    (new
+                    {
+                        controller="Error",
+                        action = "AccessDenied"
+                    }));
             }
             filterContext.Result = routeData;
         }

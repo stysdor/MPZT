@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MPZT.GUI.CustomAuthentication;
 using MPZT.GUI.Logic;
 using MPZT.GUI.Models;
 using MPZT.Infrustructure.ModelDto;
@@ -26,6 +27,7 @@ namespace MPZT.GUI.Controllers
             return PartialView("_GeoPoint", new GeoPointModel());
         }
 
+        [CustomAuthorize(Roles = "OfficeMember")]
         [HttpGet]
         public ActionResult AddArea()
         {
@@ -36,6 +38,7 @@ namespace MPZT.GUI.Controllers
             return View(model);
         }
 
+        [CustomAuthorize(Roles = "OfficeMember")]
         [HttpPost]
         public ActionResult AddArea(AreaModel model)
         {
