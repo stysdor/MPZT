@@ -8,13 +8,23 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using MPZT.GUI.Logic;
+using AutoMapper;
+using MPZT.Infrustructure.ModelDto;
 
 namespace MPZT.GUI.Controllers
 {
     [AllowAnonymous]
     public class AccountController : Controller
     {
-        // GET: Account
+        private IMapper _mapper;
+
+        public AccountController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
+
         public ActionResult Index()
         {
             return View();
@@ -63,7 +73,7 @@ namespace MPZT.GUI.Controllers
                 }
             }
             ModelState.AddModelError("", "Login lub hasło nieprawidłowe");
-            return View("Index", loginView);
+            return View("Login", loginView);
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
@@ -98,14 +108,46 @@ namespace MPZT.GUI.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Registration(Registration model)
+        public ActionResult Registration(Registration registrationView)
         {
+            bool statusRegistration = false;
+            string messageRegistration = string.Empty;
+
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
+                // Email Verification  
+                string userName = Membership.GetUserNameByEmail(registrationView.Email);
+                if (!string.IsNullOrEmpty(userName))
+                {
+                    ModelState.AddModelError("Email", "Użytkownik z podanym adresem email już istnieje.");
+                    return View(registrationView);
+                }
 
+                // UserName Verification
+                var user = Membership.GetUser(registrationView.Login, false);
+                if (user != null)
+                {
+                    ModelState.AddModelError("Login", "Użytkownik z podanym loginem już istnieje.");
+                    return View(registrationView);
+                }
+
+                //Hash the password
+                registrationView.Password = new UserPasswordManager().GetHash(registrationView.Password);
+                //Save User Data
+                var data = new ApiClient().PostData($"api/account/PostUser",_mapper.Map<UserDto>(registrationView));
+
+                if(data)
+                {
+                    statusRegistration = true;
+                    return RedirectToAction("Login", "Account", null);
+                }
+                    
+            }
+
+            ViewBag.Message = messageRegistration;
+            ViewBag.Status = statusRegistration;
+            return View(registrationView);
+        }
+         
     }
 }

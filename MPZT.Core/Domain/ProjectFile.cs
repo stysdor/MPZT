@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents ProjectFile table from datebase.
+    /// </summary>
     public class ProjectFile
     {
         public Project Project { get; set; }

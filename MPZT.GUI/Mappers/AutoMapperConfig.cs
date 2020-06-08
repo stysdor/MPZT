@@ -27,6 +27,10 @@ namespace MPZT.GUI.Mappers
                                            .ForMember(x => x.RoleName, m => m.MapFrom(p => p.Name))
                                            .ReverseMap();
             cfg.CreateMap<UserDto, User>().ReverseMap();
+            cfg.CreateMap<UserDto, Registration>().ForMember(x=>x.Login, m=> m.MapFrom(p=> p.UserName))
+                                                   .ForMember(x=> x.Name, m => m.MapFrom(p=> p.FirstName))
+                                                   .ForMember(x => x.Surname, m => m.MapFrom(p => p.LastName))
+                                                    .ReverseMap();
         }).CreateMapper();
     }
 }

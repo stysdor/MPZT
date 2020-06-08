@@ -27,7 +27,23 @@ namespace MPZT.GUI.Logic
                 if (!result.IsSuccessStatusCode) return new T();
                 var EmpResponse = result.Content.ReadAsStringAsync().Result;
                 return JsonConvert.DeserializeObject<T>(EmpResponse);
+            }
+        }
 
+        public int GetData(string url) 
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(baseurl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var responseTask = client.GetAsync(url);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (!result.IsSuccessStatusCode) return 0;
+                var EmpResponse = result.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<int>(EmpResponse);
             }
         }
 

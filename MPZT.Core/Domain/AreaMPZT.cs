@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents AreaMPZT table from datebase.
+    /// </summary>
     public class AreaMPZT: EntityBase
     {
 
-        public virtual string Name { get; set; }
-        public virtual DateTime ConsultationTime { get; set; }
-        public virtual DateTime ExpirationDate { get; set; }
-        public virtual Office Office { get; set; }
-        public virtual Location Location { get; set; }
-        public virtual ICollection<GeoPoint> GeoPoints { get; set; }
-        public virtual Phase Phase { get; set; }
+        public string Name { get; set; }
+        public DateTime ConsultationTime { get; set; }
+        public DateTime ExpirationDate { get; set; }
+        public Office Office { get; set; }
+        public Location Location { get; set; }
+        public ICollection<GeoPoint> GeoPoints { get; set; }
+        public Phase Phase { get; set; }
     }
 }

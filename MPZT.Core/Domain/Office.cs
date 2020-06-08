@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents Office table from datebase.
+    /// </summary>
     public class Office: EntityBase
     {
-        public virtual string OfficeName { get; set; }
-        public virtual string OfficeAddress { get; set; }
-        public virtual string OfficePhone { get; set; }
-        public virtual string OfficeEmail { get; set; }
+        public string OfficeName { get; set; }
+        public string OfficeAddress { get; set; }
+        public string OfficePhone { get; set; }
+        public string OfficeEmail { get; set; }
     }
 }

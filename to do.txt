@@ -1,0 +1,11 @@
+Do zrobienia:
+-hashowanie hasła
+-OfficeMember account -> widoki i funkcje dla urzędów
+	*dodanie projektu
+	*dodanie koncepcji
+	*edycja ww
+	*raport/zestawienie 
+-pobieranie użytkownika przy dodawaniu komentarza/propozycji
+-wybieranie tylko aktualnych planów
+-wylogowanie 
+-obsługa mapy

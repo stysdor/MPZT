@@ -62,7 +62,6 @@
     <Compile Include="Repositories\ILocationRepository.cs" />
     <Compile Include="Repositories\IProjectFileRepository.cs" />
     <Compile Include="Repositories\IProposalRepository.cs" />
-    <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IProjectRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
   </ItemGroup>

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents Phase table from datebase.
+    /// </summary>
     public class Phase: EntityBase
     {
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
     }
 }

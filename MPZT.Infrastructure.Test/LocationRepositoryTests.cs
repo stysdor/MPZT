@@ -20,7 +20,7 @@ namespace MPZT.Infrastructure.Test
         }
 
         [TestMethod]
-        public void GetByLocationTest()
+        public void IsNotNullGetByLocationTest()
         {
             _location = new Location()
             {
@@ -30,6 +30,19 @@ namespace MPZT.Infrastructure.Test
 
             var data = _repository.GetByLocation(_location);
             Assert.IsNotNull(data);
+            Assert.IsInstanceOfType(data, typeof(List<Location>));
+        }
+
+        [TestMethod]
+        public void IsEmptyListGetByWrongLocationTest()
+        {
+            _location = new Location()
+            {
+                Wojewodztwo = "błędne",
+            };
+
+            var data = _repository.GetByLocation(_location);
+            Assert.AreEqual(data.Count, 0);
             Assert.IsInstanceOfType(data, typeof(List<Location>));
         }
     }

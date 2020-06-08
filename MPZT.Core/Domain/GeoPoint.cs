@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents GeoPoint table from datebase.
+    /// </summary>
     public class GeoPoint: EntityBase
     {
-        public virtual double Latitude { get; set; }
-        public virtual double Longitude { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }

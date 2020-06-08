@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace MPZT.GUI.Controllers
 {
-    public class AreaController : Controller
+    public class AreaController : BaseController
     {
         private readonly IMapper _mapper;
         public AreaController(IMapper mapper)
@@ -42,17 +42,17 @@ namespace MPZT.GUI.Controllers
         [HttpPost]
         public ActionResult AddArea(AreaModel model)
         {
-            if (!ModelState.IsValid)
-                return View(model);
-            else
+            if (ModelState.IsValid)
             {
-                model.OfficeId = 1;
-                var data = new ApiClient().PostData<AreaDto>("api/area/Post", _mapper.Map<AreaDto>(model));
-                if (data)
-                    return RedirectToAction("Index", "Area");
-                else
-                    return View(model); 
-           }
+                model.OfficeId = new UserApi().GetOfficeIdByUserId(User.UserId);
+                if (model.OfficeId > 0)
+                {
+                    var data = new ApiClient().PostData<AreaDto>("api/area/Post", _mapper.Map<AreaDto>(model));
+                    if (data)
+                        return RedirectToAction("Index", "Area");
+                }      
+            }
+            return View(model);
         }
 
         #endregion

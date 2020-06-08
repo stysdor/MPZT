@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<h2 class="area-title">Menu</h2>
+<div class="list-areas">
+    <ul class="list-group">
+        <li class="list-group-item"> @Html.ActionLink("Dodaj obszar opracowania", "AddArea", "Area", new { area = "" }, new { @class = "" })</li>
+        <li class="list-group-item"> @Html.ActionLink("Dodaj projekt", "AddProject", "Project", new { area = "" }, new { @class = "" })</li>
+        <li class="list-group-item"> @Html.ActionLink("Zestawienie propozycji", "ShowProposals", "Concept", new { area = "" }, new { @class = "" })</li>
+        <li class="list-group-item"> @Html.ActionLink("Zestawienie komentarzy", "ShowComments", "Project", new { area = "" }, new { @class = "" })</li>
+    </ul>
+</div>
+

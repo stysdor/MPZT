@@ -19,10 +19,18 @@ namespace MPZT.Infrastructure.Test
         }
 
         [TestMethod]
-        public void GetProposalsByAreaIdTest()
+        public void IsNotNullGetProposalsByAreaIdTest()
         {
             var list = _service.GetProposals(1);
             Assert.IsNotNull(list);
+            Assert.IsInstanceOfType(list, typeof(List<ProposalDto>));
+        }
+
+        [TestMethod]
+        public void IsEmptyListGetProposalsByWrongAreaIdTest()
+        {
+            var list = _service.GetProposals(9999);
+            Assert.AreEqual(list.Count, 0);
             Assert.IsInstanceOfType(list, typeof(List<ProposalDto>));
         }
     }

@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents Location table from datebase.
+    /// </summary>
     public class Location: EntityBase
     {
-        public virtual string Country { get; set; }
-        public virtual string Wojewodztwo { get; set; }
-        public virtual string Powiat { get; set; }
-        public virtual string Gmina { get; set; }
-        public virtual string City { get; set; }
-        public virtual string Dzielnica { get; set; }
-        public virtual string Street { get; set; }
-        public virtual string NrLand { get; set; }
+        public string Country { get; set; }
+        public string Wojewodztwo { get; set; }
+        public string Powiat { get; set; }
+        public string Gmina { get; set; }
+        public string City { get; set; }
+        public string Dzielnica { get; set; }
+        public string Street { get; set; }
+        public string NrLand { get; set; }
     }
 }

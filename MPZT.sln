@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPZT.Api", "MPZT.Api\MPZT.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPZT.Infrastructure.Test", "MPZT.Infrastructure.Test\MPZT.Infrastructure.Test.csproj", "{7E137149-FE95-4F4D-B2B6-D773FFCD592E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPZT.GUI.Test", "MPZT.GUI.Test\MPZT.GUI.Test.csproj", "{0120C509-F570-43C3-9E0A-6793D613F93D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7E137149-FE95-4F4D-B2B6-D773FFCD592E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E137149-FE95-4F4D-B2B6-D773FFCD592E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E137149-FE95-4F4D-B2B6-D773FFCD592E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0120C509-F570-43C3-9E0A-6793D613F93D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0120C509-F570-43C3-9E0A-6793D613F93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0120C509-F570-43C3-9E0A-6793D613F93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0120C509-F570-43C3-9E0A-6793D613F93D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

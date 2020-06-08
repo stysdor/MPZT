@@ -13,7 +13,7 @@ using System.Web.Security;
 
 namespace MPZT.GUI.Controllers
 {
-    public class ConceptController : Controller
+    public class ConceptController : BaseController
     {
         private readonly IMapper _mapper;
         public ConceptController(IMapper mapper)
@@ -75,7 +75,7 @@ namespace MPZT.GUI.Controllers
             ProposalModel model = new ProposalModel()
             {
                 AreaId = data.Area.Id,
-                UserId = 1
+                UserId = User.UserId
             };
             return View(model);
         }

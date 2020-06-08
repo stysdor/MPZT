@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents Phase table from datebase.
+    /// </summary>
     public class Project : EntityBase
     {
-        public virtual AreaMPZT AreaMPZT { get; set; }
-        public virtual string Number { get; set; }
-        public virtual string Description { get; set; }
+        public AreaMPZT AreaMPZT { get; set; }
+        public string Number { get; set; }
+        public string Description { get; set; }
 
         public IList<ProjectFile> Files { get; set; }
     }

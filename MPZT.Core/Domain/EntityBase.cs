@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
-    public class EntityBase
+    /// <summary>
+    /// Base class for all classes representing tables from database for generic use.
+    /// </summary>
+    public abstract class EntityBase
     {
-        public virtual int Id { get; set; }
+        public int Id { get; set; }
     }
 }

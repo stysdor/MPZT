@@ -41,7 +41,15 @@ namespace MPZT.Infrastructure.Test
         }
 
         [TestMethod]
-        public void IsNotNullAreaListGeByGeoPointRepositoryTest()
+        public void IsEmptyAreaListGetByWrongLocationRepositoryTest()
+        {
+            var locations = new List<Location>() { new Location() { Country = "Niemcy" } };
+            var data = _areaRepository.GetByLocation(locations);
+            Assert.AreEqual(data.Count, 0);
+        }
+
+        [TestMethod]
+        public void IsNotNullAreaListGetByGeoPointRepositoryTest()
         {
             var data = _areaRepository.GetByGeoPoint(_geopoints);
             Assert.IsNotNull(data);
@@ -49,7 +57,7 @@ namespace MPZT.Infrastructure.Test
         }
 
         [TestMethod]
-        public void IsNotNullAreaListGetAllRepositoryTest()
+        public void IsNotNullAreaListGetAllAreaRepositoryTest()
         {
             var data = _areaRepository.GetAll();
             Assert.IsNotNull(data);

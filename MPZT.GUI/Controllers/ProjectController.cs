@@ -11,14 +11,14 @@ using System.Web.Mvc;
 
 namespace MPZT.GUI.Controllers
 {
-    public class ProjectController : Controller
+    public class ProjectController : BaseController
     {
         private IMapper _mapper;
         public ProjectController(IMapper mapper)
         {
             _mapper = mapper;
         }
-        // GET: Comment
+
         public ActionResult Index()
         {
             return View();
@@ -63,7 +63,7 @@ namespace MPZT.GUI.Controllers
             CommentModel model = new CommentModel()
             {
                 ProjectId = data.Project.Id,
-                UserId = 1
+                UserId = User.UserId
             };
             return View(model);
         }

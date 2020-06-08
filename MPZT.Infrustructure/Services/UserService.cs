@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MPZT.Core.Domain;
 using MPZT.Core.Repositories;
 using MPZT.Infrustructure.ModelDto;
 using MPZT.Infrustructure.Repositories;
@@ -33,5 +34,26 @@ namespace MPZT.Infrustructure.Services
             return _mapper.Map<List<RoleDto>>(_userRepository.GetRolesForUser(userName));
         }
 
+        public UserDto GetUserByEmail(string email)
+        {
+            string userName = _userRepository.GetUserNameByEmail(email);
+            if (!string.IsNullOrEmpty(userName))
+                return new UserDto() { UserName = userName };
+            else return null;
+        }
+
+        public int InsertUser(UserDto user)
+        {
+            var id = _userRepository.InsertUser(_mapper.Map<User>(user));
+            if (id > 0)
+                _userRepository.SetRoleForUser(id, "User");
+            return id;
+        }
+
+        public int GetOfficeId(int userId)
+        {
+           int id = _userRepository.GetOfficeId(userId);
+           return id;
+        }
     }
 }

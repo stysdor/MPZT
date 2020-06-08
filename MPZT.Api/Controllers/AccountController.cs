@@ -38,5 +38,26 @@ namespace MPZT.Api.Controllers
         {
             return Json(_userService.GetRolesForUser(userName));
         }
+
+        [HttpPost]
+        public IHttpActionResult PostUser([FromBody] UserDto user)
+        {
+            return Json(_userService.InsertUser(user));
+        }
+
+        [Route("api/account/GetUserByEmail/{email}/")]
+        [HttpGet]
+        public IHttpActionResult GetUserByEmail(string email)
+        {
+            return Json(_userService.GetUserByEmail(email));
+        }
+
+        [Route("api/account/GetOfficeId/{id:int}")]
+        [HttpGet]
+        public IHttpActionResult GetOfficeId(int id)
+        {
+            return Json(_userService.GetOfficeId(id));
+        }
+
     }
 }

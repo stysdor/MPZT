@@ -11,6 +11,8 @@ namespace MPZT.GUI.CustomAuthentication
 {
     public class CustomMembership : MembershipProvider
     {
+
+        #region not impemented
         public override bool EnablePasswordRetrieval => throw new NotImplementedException();
 
         public override bool EnablePasswordReset => throw new NotImplementedException();
@@ -33,7 +35,6 @@ namespace MPZT.GUI.CustomAuthentication
 
         public override string PasswordStrengthRegularExpression => throw new NotImplementedException();
 
-        #region not impemented
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
             throw new NotImplementedException();
@@ -84,11 +85,6 @@ namespace MPZT.GUI.CustomAuthentication
             throw new NotImplementedException();
         }
 
-        public override string GetUserNameByEmail(string email)
-        {
-            throw new NotImplementedException();
-        }
-
         public override string ResetPassword(string username, string answer)
         {
             throw new NotImplementedException();
@@ -115,7 +111,15 @@ namespace MPZT.GUI.CustomAuthentication
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
             var membership = new UserApi().GetUser(username);
-            return new CustomMembershipUser(membership);
+            if (!(membership == null))
+                return new CustomMembershipUser(membership);
+            else return null;
+        }
+
+
+        public override string GetUserNameByEmail(string email)
+        {
+            return new UserApi().GetUserByEmail(email);
         }
     }
 }

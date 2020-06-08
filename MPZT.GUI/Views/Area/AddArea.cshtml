@@ -15,6 +15,9 @@
                     @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
                 </div>
             </div>
+            <hr />
+            @Html.Partial("_LocationForm", new MPZT.GUI.Models.LocationModel())
+            <hr />
             <div class="row">
                 <div class="col-sm-12">
                     <button class="btn btn-primary pull-right" type="submit">Dodaj</button>

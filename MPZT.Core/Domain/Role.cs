@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents Role table from datebase.
+    /// </summary>
     public class Role: EntityBase
     {
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
     }
 }

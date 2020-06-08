@@ -32,6 +32,18 @@ namespace MPZT.Infrastructure.Test
             Assert.IsInstanceOfType(list, typeof(List<AreaDto>));
         }
 
+        public void IsEmptyAreaListGeByWrongLocationServiceTest()
+        {
+            LocationDto location = new LocationDto()
+            {
+                Wojewodztwo = "błędne",
+            };
+
+            var list = _service.GetByLocation(location);
+            Assert.AreEqual(list.Count,0);
+            Assert.IsInstanceOfType(list, typeof(List<AreaDto>));
+        }
+
         [TestMethod]
         public void IsNotNullAreaListGetAllServiceTest()
         {
@@ -41,7 +53,7 @@ namespace MPZT.Infrastructure.Test
         }
 
         [TestMethod]
-        public void IsNotNullAreaListGeByGeoPointServiceTest()
+        public void IsNotNullAreaListGetByGeoPointServiceTest()
         {
             GeoPointSearchDto point =  new GeoPointSearchDto()
             {
@@ -52,6 +64,20 @@ namespace MPZT.Infrastructure.Test
             var list = _service.GetByGeoPoint(point);
             Assert.IsNotNull(list);
             Assert.IsInstanceOfType(list, typeof(List<AreaDto>)); 
+        }
+
+        [TestMethod]
+        public void IsEmptyAreaListGetByWrongGeoPointServiceTest()
+        {
+            GeoPointSearchDto point = new GeoPointSearchDto()
+            {
+                GeoPoint = new GeoPointDto() { Latitude = 20, Longitude = 10 },
+                Range = 50
+            };
+
+            var list = _service.GetByGeoPoint(point);
+            Assert.AreEqual(list.Count, 0);
+            Assert.IsInstanceOfType(list, typeof(List<AreaDto>));
         }
     }
 }

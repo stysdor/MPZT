@@ -7,14 +7,22 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents ProjectFile table from datebase.
+    /// </summary>
     public class Proposal: EntityBase
     {
-        public virtual string Description { get; set; }
-        public virtual User User { get; set; }
-        public virtual AreaMPZT AreaMPZT { get; set; }
-        public virtual int Likes { get; set; }
-        public virtual int Dislikes { get; set; }
+        public string Description { get; set; }
+        public User User { get; set; }
+        public AreaMPZT AreaMPZT { get; set; }
+        public int Likes { get; set; }
+        public int Dislikes { get; set; }
 
+        /// <summary>
+        /// Gets the value of property by its <paramref name="name"/>
+        /// </summary>
+        /// <param name="name">The name of the value to get.</param>
+        /// <returns>The property with specified name</returns>
         public object this[string name]
         {
             get

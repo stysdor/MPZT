@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MPZT.Core.Domain
 {
+    /// <summary>
+    /// Represents User table from datebase.
+    /// </summary>
     public class User: EntityBase
     {
         public string UserName { get; set; }
