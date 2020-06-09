@@ -17,6 +17,6 @@ namespace MPZT.Infrustructure.Services
         List<AreaDto> GetByLocation(LocationDto item);
         List<AreaDto> GetByGeoPoint(GeoPointSearchDto item);
 
-        void InsertOrUpdate(AreaDto item);
+        int InsertOrUpdate(AreaDto item);
     }
 }

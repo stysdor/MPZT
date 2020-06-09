@@ -15,11 +15,6 @@ namespace MPZT.Infrustructure.Repositories
 {
     public class AreaRepository: IAreaRepository
     {
-        public AreaRepository()
-        {
-            //NHibernateBase nHibernate = new NHibernateBase();
-            //nHibernate.Initialize();
-        }
         public AreaMPZT Get(int id)
         {
             throw new NotImplementedException();
@@ -50,31 +45,31 @@ namespace MPZT.Infrustructure.Repositories
 
         public int InsertOrUpdate(AreaMPZT item)
         {
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
+            {
+                db.Open();
+                if (item.Id > 0)
+                    return Update(item, db);
+                else
+                    return Insert(item, db);
+            }
+        }
+        private int Insert(AreaMPZT item, IDbConnection db)
+        {
+            string consultationTime = item.ConsultationTime.ToString("yyyy-MM-dd HH:mm:ss");
+            string expirationDate = item.ExpirationDate.ToString("yyyy-MM-dd HH:mm:ss");
+
+            string sql = @"INSERT INTO AreaMPZT (Name, ConsultationTime, ExpirationDate, PhaseId, OfficeId, LocationId)"
+                + $"Values ('{item.Name}', '{consultationTime}', '{expirationDate}', {item.Phase.Id}, {item.Office.Id}, {item.Location.Id});"
+                + @"SELECT CAST(SCOPE_IDENTITY() as int)";
+            var id = db.Query<int>(sql).SingleOrDefault();
+            return id;
+        }
+
+        private int Update(AreaMPZT item, IDbConnection db)
+        {
             throw new NotImplementedException();
         }
-        //private int Insert(AreaMPZT item, IDbConnection db)
-        //{
-        //    int officeId = item.Office.Id;
-        //    int phaseId = item.Phase.Id;
-        //    string sql = @"INSERT INTO AreaMPZT (Name, ConsultationTime, ExpirationDate, PhaseId, OfficeId)"
-        //        + $"Values (@Name, @ConsultationTime, @ExpirationDate, {phaseId}, {officeId}, @Country, @YearOfProduction);"
-        //        + @"SELECT CAST(SCOPE_IDENTITY() as int)";
-        //    var id = db.Query<int>(sql, new
-        //    {
-        //        item.MovieTitle,
-        //        item.MovieDescription,
-        //        item.CategoryId,
-        //        item.Country,
-        //        item.YearOfProduction
-        //    }).Single();
-
-        //    return id;
-        //}
-
-        //private int Update(AreaMPZT item, IDbConnection db)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public void Remove(int id)
         {
@@ -149,6 +144,27 @@ namespace MPZT.Infrustructure.Repositories
             }
 
             return list;
+        }
+
+        public bool AddGeoPointsToArea(List<GeoPoint> list, int areaId)
+        {
+            bool isSucceed = false;
+            if (list.Count > 0)
+            {
+                using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
+                {
+                    db.Open();
+                    var sql = "INSERT INTO AreaMPZTGeopoints VALUES (@geopointId, @areaMPZTId)";
+                    isSucceed = true;
+                    foreach (var point in list)
+                    {
+                        var result = db.Execute(sql, new { geopointId = point.Id, areaMPZTId = areaId });
+                        if (result == 0)
+                            isSucceed = false;
+                    }
+                }
+            }
+            return isSucceed;
         }
     } 
 }

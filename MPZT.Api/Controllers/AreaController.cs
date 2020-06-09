@@ -19,13 +19,13 @@ namespace MPZT.Api.Controllers
             _areaService = areaService;
         }
 
-        //[Route("api/area/Post")]
-        //[HttpPost]
-        //public IHttpActionResult Post([FromBody] AreaDto area)
-        //{
-        //    _areaService.InsertOrUpdate(area);
-        //    return Json(true);
-        //}
+        [Route("api/area/Post")]
+        [HttpPost]
+        public IHttpActionResult Post([FromBody] AreaDto area)
+        {
+           
+            return Json(_areaService.InsertOrUpdate(area));
+        }
 
         [HttpGet]
         public IHttpActionResult Get()

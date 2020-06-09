@@ -65,18 +65,36 @@ namespace MPZT.Infrustructure.Services
             return list;
         }
 
-        public void InsertOrUpdate(AreaDto item)
+        public int InsertOrUpdate(AreaDto item)
         {
             var area = _mapper.Map<AreaMPZT>(item);
-            var location = _mapper.Map<Location>(item.Location);
-            var geopoints = new List<GeoPoint>();
-            foreach (GeoPointDto point in item.GeoPoints)
+
+            if (!(item.Location == null))
             {
-                var geopoint = _mapper.Map<GeoPoint>(point);
-                _geopointRepository.InsertOrUpdate(geopoint);
+                var id = _locationRepository.InsertOrUpdate(area.Location);
+                area.Location.Id = id;
             }
-            _locationRepository.InsertOrUpdate(location);
-            _areaRepository.InsertOrUpdate(area);
+
+            int areaId = _areaRepository.InsertOrUpdate(area);
+
+            if (area.GeoPoints.Count > 0)
+            {
+                var geopoints = new List<GeoPoint>();
+                foreach (GeoPointDto point in item.GeoPoints)
+                {
+                    if (point.Latitude > 0 && point.Longitude > 0)
+                    {
+                        var geopoint = _mapper.Map<GeoPoint>(point);
+                        var pointId = _geopointRepository.InsertOrUpdate(geopoint);
+                        geopoint.Id = pointId;
+                        geopoints.Add(geopoint);
+                    }
+                    _areaRepository.AddGeoPointsToArea(geopoints, areaId);
+                }
+            }   
+            return areaId;
         }
+
+        
     }
 }

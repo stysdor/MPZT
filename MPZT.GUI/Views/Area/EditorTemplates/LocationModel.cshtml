@@ -1,5 +1,6 @@
 ﻿@model MPZT.GUI.Models.LocationModel
 
+@Html.HiddenFor(x => x.Country, new { @Value = "Polska"})
 
 <div class="form-group row">
     @Html.LabelFor(x => x.Wojewodztwo, new { @class = "col-sm-2 col-form-label" })

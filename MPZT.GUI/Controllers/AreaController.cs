@@ -27,14 +27,16 @@ namespace MPZT.GUI.Controllers
             return PartialView("_GeoPoint", new GeoPointModel());
         }
 
+        public PartialViewResult Location()
+        {
+            return PartialView("_LocationForm", new LocationModel());
+        }
+
         [CustomAuthorize(Roles = "OfficeMember")]
         [HttpGet]
         public ActionResult AddArea()
         {
-            AreaModel model = new AreaModel
-            {
-                GeoPoints = new List<GeoPointModel>()
-            };
+            AreaModel model = new AreaModel();
             return View(model);
         }
 
@@ -42,8 +44,14 @@ namespace MPZT.GUI.Controllers
         [HttpPost]
         public ActionResult AddArea(AreaModel model)
         {
+            model.PhaseId = (int)model.PhasePhase;
             if (ModelState.IsValid)
             {
+                foreach (var point in model.GeoPoints)
+                {
+                    if (!TryValidateModel(point))
+                        return View(model);      
+                }
                 model.OfficeId = new UserApi().GetOfficeIdByUserId(User.UserId);
                 if (model.OfficeId > 0)
                 {
@@ -72,14 +80,21 @@ namespace MPZT.GUI.Controllers
 
         public ActionResult PostByLocation(LocationModel model)
         {
-            var location = _mapper.Map<LocationDto>(model);
-            var data = new ApiClient().PostData<LocationDto, List<AreaDto>>("api/area/PostByLocation", location);
-            var list = new List<AreaModel>();
-            foreach (AreaDto area in data)
+            if (ModelState.IsValid)
             {
-                list.Add(_mapper.Map<AreaModel>(area));
+                var location = _mapper.Map<LocationDto>(model);
+                var data = new ApiClient().PostData<LocationDto, List<AreaDto>>("api/area/PostByLocation", location);
+                var list = new List<AreaModel>();
+                if (!(data == null))
+                {
+                    foreach (AreaDto area in data)
+                    {
+                        list.Add(_mapper.Map<AreaModel>(area));
+                    }
+                }
+                return View("Index", list);
             }
-            return View("Index", list);
+            else return View("Index", "Home", model);
         }
 
         public ActionResult PostByGeoPoint(GeoPointSearchModel model)

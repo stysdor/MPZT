@@ -1,22 +1,21 @@
 ﻿@model MPZT.GUI.Models.GeoPointModel
 
-<tr class="row geopoint">
+<tr class="geopoint">
     @using (Html.BeginCollectionItem("GeoPoints"))
     {
         @Html.HiddenFor(x => x.Id, new { @class = "id" })
-    <td class="col-3">
+    <td class="col-4">
         @Html.EditorFor(x => x.Latitude, new { @type = "number" })
         @Html.ValidationMessageFor(x => x.Latitude, null, new { @class = "text-danger", @style="display: block" })
 
     </td>
-    <td class="col-3">
+    <td class="col-4">
         @Html.EditorFor(x => x.Longitude, new { @type = "number" })
         @Html.ValidationMessageFor(x => x.Longitude, null, new { @class = "text-danger", @style = "display: block" })
     </td>
-        <td class="col-3">
+        <td class="col-4">
             <button type="button" class="delete btn btn-primary btn-block pull-right">Usuń</button>
         </td>
-
     }
 </tr>
 <script>

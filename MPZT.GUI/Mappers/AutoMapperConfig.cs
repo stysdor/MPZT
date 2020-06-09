@@ -17,6 +17,7 @@ namespace MPZT.GUI.Mappers
             cfg.CreateMap<GeoPointModel, GeoPointDto>().ReverseMap();
             cfg.CreateMap<GeoPointSearchModel, GeoPointSearchDto>().ReverseMap();
             cfg.CreateMap<LocationModel, LocationDto>().ReverseMap();
+            cfg.CreateMap<LocationSearchModel, LocationDto>().ReverseMap();
             cfg.CreateMap<AreaDto, AreaModel>().ReverseMap();
             cfg.CreateMap<ProposalModel, ProposalDto>().ReverseMap();
             cfg.CreateMap<CommentModel, CommentDto>().ReverseMap();

@@ -68,6 +68,44 @@ namespace MPZT.Infrustructure.Repositories
 
         public int InsertOrUpdate(GeoPoint item)
         {
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
+            {
+                db.Open();
+                if (item.Id > 0)
+                    return Update(item, db);
+                else
+                    return InsertOrGetId(item, db);
+            }
+        }
+
+        private int InsertOrGetId(GeoPoint item, IDbConnection db)
+        {
+            string latitude = item.Latitude.ToString().Replace(",", ".");
+            string longitude =item.Longitude.ToString().Replace(",", ".");
+            string sql = @"SELECT * FROM GeoPoints "
+                + $"WHERE Latitude = {latitude} AND Longitude = {longitude};"
+                + @"SELECT CAST(SCOPE_IDENTITY() as int);";
+            var point = db.Query<GeoPoint>(sql).SingleOrDefault();
+            if (item.Equals(point))
+                return point.Id;
+            else
+                return Insert(item, db);
+        }
+
+        private int Insert(GeoPoint item, IDbConnection db)
+        {
+            string latitude = item.Latitude.ToString().Replace(",", ".");
+            string longitude = item.Longitude.ToString().Replace(",", ".");
+
+            string sql = @"INSERT INTO GeoPoints"
+                + $" Values ({latitude} , {longitude});"
+                + @"SELECT CAST(SCOPE_IDENTITY() as int);";
+            var id = db.Query<int>(sql).SingleOrDefault();
+            return id;
+        }
+
+        private int Update(GeoPoint item, IDbConnection db)
+        {
             throw new NotImplementedException();
         }
 

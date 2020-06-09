@@ -10,10 +10,7 @@ namespace MPZT.GUI.Models
     {
         public AreaModel()
         {
-            GeoPoints = new List<GeoPointModel>
-            {
-                new GeoPointModel()
-            };
+            GeoPoints = new List<GeoPointModel>();
             Location = new LocationModel(); 
         }
         public int Id { get; set; }
@@ -36,14 +33,18 @@ namespace MPZT.GUI.Models
         [Display(Name = "Faza opracowania")]
         public int PhaseId{ get; set; }
 
+        [Required(ErrorMessage = "Pole jest wymagane")]
+        [Display(Name = "Faza opracowania")]
+        public Phase PhasePhase { get; set; }
+
         [Display(Name = "Lokalizacja")]
         public LocationModel Location { get; set; }
+
         [Display(Name = "Współrzędne")]
         public List<GeoPointModel> GeoPoints { get; set; }
 
         public int OfficeId { get; set; }
 
-        public List<string> Phases { get; set; }
         public enum Phase
         {
             Koncepcja = 1,
