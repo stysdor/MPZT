@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['version_2etxt_864',['version.txt',['../_microsoft_8_bcl_8_async_interfaces_81_81_80_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_buffers_84_85_80_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_memory_84_85_83_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_numerics_8_vectors_84_85_80_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_runtime_8_compiler_services_8_unsafe_84_85_82_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_runtime_8_compiler_services_8_unsafe_84_87_80_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_text_8_encodings_8_web_84_87_80_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_text_8_json_84_87_81_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_threading_8_tasks_8_extensions_84_85_82_2version_8txt.html',1,'(Global Namespace)'],['../_system_8_value_tuple_84_85_80_2version_8txt.html',1,'(Global Namespace)']]]
+];

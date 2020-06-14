@@ -1,0 +1,79 @@
+\hypertarget{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository}{}\doxysection{M\+P\+Z\+T.\+Core.\+Repositories.\+I\+Geo\+Point\+Repository Interface Reference}
+\label{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository}\index{MPZT.Core.Repositories.IGeoPointRepository@{MPZT.Core.Repositories.IGeoPointRepository}}
+
+
+Interface for operations on instances of Geo\+Point class.  
+
+
+Inheritance diagram for M\+P\+Z\+T.\+Core.\+Repositories.\+I\+Geo\+Point\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_m_p_z_t_1_1_core_1_1_domain_1_1_geo_point}{Geo\+Point}} $>$ \mbox{\hyperlink{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository_a052e94c29b0b1fe69ec4975018fb145e}{Get\+All\+In\+Range}} (\mbox{\hyperlink{class_m_p_z_t_1_1_core_1_1_domain_1_1_geo_point}{Geo\+Point}} point, int range)
+\begin{DoxyCompactList}\small\item\em Gets List of instances of Geo\+Point class. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_m_p_z_t_1_1_core_1_1_domain_1_1_geo_point}{Geo\+Point}} $>$ \mbox{\hyperlink{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository_aaafe8102bc2ab32b6e91c17edaed49ab}{Get\+By\+Area}} (int area\+Id)
+\begin{DoxyCompactList}\small\item\em Gets List of instances of Geo\+Point class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for operations on instances of Geo\+Point class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository_a052e94c29b0b1fe69ec4975018fb145e}\label{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository_a052e94c29b0b1fe69ec4975018fb145e}} 
+\index{MPZT.Core.Repositories.IGeoPointRepository@{MPZT.Core.Repositories.IGeoPointRepository}!GetAllInRange@{GetAllInRange}}
+\index{GetAllInRange@{GetAllInRange}!MPZT.Core.Repositories.IGeoPointRepository@{MPZT.Core.Repositories.IGeoPointRepository}}
+\doxysubsubsection{\texorpdfstring{GetAllInRange()}{GetAllInRange()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_m_p_z_t_1_1_core_1_1_domain_1_1_geo_point}{Geo\+Point}}$>$ M\+P\+Z\+T.\+Core.\+Repositories.\+I\+Geo\+Point\+Repository.\+Get\+All\+In\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_m_p_z_t_1_1_core_1_1_domain_1_1_geo_point}{Geo\+Point}}}]{point,  }\item[{int}]{range }\end{DoxyParamCaption})}
+
+
+
+Gets List of instances of Geo\+Point class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & Instance of Geo\+Point class -\/ the centre of area.\\
+\hline
+{\em range} & Range in km around {\itshape point} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of instances of Geo\+Point class in specific area.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_m_p_z_t_1_1_infrustructure_1_1_repositories_1_1_geo_point_repository_a960851210d888059918f285fd91d9293}{M\+P\+Z\+T.\+Infrustructure.\+Repositories.\+Geo\+Point\+Repository}}.
+
+\mbox{\Hypertarget{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository_aaafe8102bc2ab32b6e91c17edaed49ab}\label{interface_m_p_z_t_1_1_core_1_1_repositories_1_1_i_geo_point_repository_aaafe8102bc2ab32b6e91c17edaed49ab}} 
+\index{MPZT.Core.Repositories.IGeoPointRepository@{MPZT.Core.Repositories.IGeoPointRepository}!GetByArea@{GetByArea}}
+\index{GetByArea@{GetByArea}!MPZT.Core.Repositories.IGeoPointRepository@{MPZT.Core.Repositories.IGeoPointRepository}}
+\doxysubsubsection{\texorpdfstring{GetByArea()}{GetByArea()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_m_p_z_t_1_1_core_1_1_domain_1_1_geo_point}{Geo\+Point}}$>$ M\+P\+Z\+T.\+Core.\+Repositories.\+I\+Geo\+Point\+Repository.\+Get\+By\+Area (\begin{DoxyParamCaption}\item[{int}]{area\+Id }\end{DoxyParamCaption})}
+
+
+
+Gets List of instances of Geo\+Point class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em area\+Id} & Id of instance of Area\+M\+P\+ZT class.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of instances of Geo\+Point class in specific instance of Area\+M\+P\+ZT class..
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_m_p_z_t_1_1_infrustructure_1_1_repositories_1_1_geo_point_repository_a7adfb09c6994111afa4fdde53ec193fb}{M\+P\+Z\+T.\+Infrustructure.\+Repositories.\+Geo\+Point\+Repository}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+M\+P\+Z\+T.\+Core/\+Repositories/\mbox{\hyperlink{_i_geo_point_repository_8cs}{I\+Geo\+Point\+Repository.\+cs}}\end{DoxyCompactItemize}

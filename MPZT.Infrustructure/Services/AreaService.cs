@@ -95,6 +95,13 @@ namespace MPZT.Infrustructure.Services
             return areaId;
         }
 
-        
+        public List<AreaDto> GetAreasByOffice(int officeId)
+        {
+            var list = _areaRepository.GetByOfficeId(officeId);
+            list = fillAreasGeopoints(list);
+            return _mapper.Map<List<AreaDto>>(list);
+        }
+
+
     }
 }

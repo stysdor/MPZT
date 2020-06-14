@@ -47,7 +47,7 @@ namespace MPZT.Infrastructure.Test
         public void IsTrueWhenSetCorrectRoleNameTest()
         {
             string roleName = "User";
-            Assert.IsTrue(_repository.SetRoleForUser(6, roleName));
+            Assert.IsTrue(_repository.SetRoleForUser(9, roleName));
         }
 
         [TestMethod]

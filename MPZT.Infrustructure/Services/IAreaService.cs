@@ -18,5 +18,6 @@ namespace MPZT.Infrustructure.Services
         List<AreaDto> GetByGeoPoint(GeoPointSearchDto item);
 
         int InsertOrUpdate(AreaDto item);
+        List<AreaDto> GetAreasByOffice(int officeId);
     }
 }

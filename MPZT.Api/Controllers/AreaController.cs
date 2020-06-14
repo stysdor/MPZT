@@ -49,6 +49,12 @@ namespace MPZT.Api.Controllers
             return Json(_areaService.GetByGeoPoint(point));
         }
 
-        
+        [Route("api/area/GetAreasByOffice/{id:int}")]
+        [HttpGet]
+        public IHttpActionResult GetAreasByOffice(int id)
+        {
+            return Json(_areaService.GetAreasByOffice(id));
+        }
+
     }
 }

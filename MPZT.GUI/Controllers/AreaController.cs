@@ -70,12 +70,7 @@ namespace MPZT.GUI.Controllers
         public ActionResult Index()
         {
             var data = new ApiClient().GetData<List<AreaDto>>("api/area");
-            var list = new List<AreaModel>();
-            foreach (AreaDto area in data)
-            {
-                list.Add(_mapper.Map<AreaModel>(area));
-            }
-            return View(list);
+            return View(_mapper.Map<List<AreaModel>>(data));
         }
 
         public ActionResult PostByLocation(LocationModel model)
@@ -84,15 +79,7 @@ namespace MPZT.GUI.Controllers
             {
                 var location = _mapper.Map<LocationDto>(model);
                 var data = new ApiClient().PostData<LocationDto, List<AreaDto>>("api/area/PostByLocation", location);
-                var list = new List<AreaModel>();
-                if (!(data == null))
-                {
-                    foreach (AreaDto area in data)
-                    {
-                        list.Add(_mapper.Map<AreaModel>(area));
-                    }
-                }
-                return View("Index", list);
+                return View("Index", _mapper.Map<List<AreaModel>>(data));
             }
             else return View("Index", "Home", model);
         }
@@ -101,12 +88,14 @@ namespace MPZT.GUI.Controllers
         { 
             var pointSearch = _mapper.Map<GeoPointSearchDto>(model);
             var data = new ApiClient().PostData<GeoPointSearchDto, List<AreaDto>>("api/area/PostByGeoPoint/", pointSearch);
-            var list = new List<AreaModel>();
-            foreach (AreaDto area in data)
-            {
-                list.Add(_mapper.Map<AreaModel>(area));
-            }
-            return View("Index",list);
+            return View("Index", _mapper.Map<List<AreaModel>>(data));
+        }
+
+        public ActionResult GetAreasByOffice()
+        {
+            int officeId = new UserApi().GetOfficeIdByUserId(User.UserId);
+            var data = new ApiClient().GetData<List<AreaDto>>($"api/area/GetAreasByOffice/{officeId}");
+            return View("Index", _mapper.Map<List<AreaModel>>(data));
         }
 
         #endregion

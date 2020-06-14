@@ -110,6 +110,27 @@ namespace MPZT.Infrustructure.Repositories
             return list;
         }
 
+        public List<AreaMPZT> GetByOfficeId(int officeId)
+        {
+            List<AreaMPZT> list = new List<AreaMPZT>();
+
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
+            {
+                var sql = $"SELECT * FROM AreaMPZT AS A INNER JOIN Locations AS L ON A.LocationId = L.Id INNER JOIN Offices AS O ON A.OfficeId = O.Id INNER JOIN Phases AS P ON A.PhaseId = P.Id WHERE O.Id = {officeId};";
+                db.Open();
+                list = db.Query<AreaMPZT, Location, Office, Phase, AreaMPZT>(sql,
+                    (area, location, office, phase) =>
+                    {
+                        area.Location = location;
+                        area.Office = office;
+                        area.Phase = phase;
+                        return area;
+                    }).ToList();
+            }
+
+            return list;
+        }
+
         /// <summary>
         /// Gets list of AreaMPZT instance which contains specific geopoints.
         /// !I doesn't return AreaMPZT.GeoPoints property!

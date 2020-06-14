@@ -27,6 +27,13 @@ namespace MPZT.Core.Repositories
         List<AreaMPZT> GetByGeoPoint(List<GeoPoint> points);
 
         /// <summary>
+        /// Gets list of instances of AreaMPZT class by Office Id property.
+        /// </summary>
+        /// <param name="officeId">The value of Id property of instance of Office class.</param>
+        /// <returns>List of AreaMPZT with specific officeId.</returns>
+        List<AreaMPZT> GetByOfficeId(int officeId);
+
+        /// <summary>
         /// Adds list of instances of GeoPoint class to the specific instance of AreaMPZT class.
         /// </summary>
         /// <param name="list">List of instances of GeoPoint class to add.</param>
