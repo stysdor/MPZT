@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['wojewodztwa_1253',['Wojewodztwa',['../class_m_p_z_t_1_1_g_u_i_1_1_models_1_1_location_model.html#a9234cd760e8c518de64af4aeb83377a5',1,'MPZT.GUI.Models.LocationModel.Wojewodztwa()'],['../class_m_p_z_t_1_1_g_u_i_1_1_models_1_1_location_search_model.html#a32e8f17312fc7604efef492bb1627cc4',1,'MPZT.GUI.Models.LocationSearchModel.Wojewodztwa()']]],
-  ['wojewodztwo_1254',['Wojewodztwo',['../class_m_p_z_t_1_1_core_1_1_domain_1_1_location.html#a023e36489543515fc79e300f0ac288b5',1,'MPZT.Core.Domain.Location.Wojewodztwo()'],['../class_m_p_z_t_1_1_g_u_i_1_1_models_1_1_location_model.html#abacf0f2ab563585c7eb4d66e3a4e0548',1,'MPZT.GUI.Models.LocationModel.Wojewodztwo()'],['../class_m_p_z_t_1_1_g_u_i_1_1_models_1_1_location_search_model.html#a92bc16b5f5f0a1dafbfc9885c00643f7',1,'MPZT.GUI.Models.LocationSearchModel.Wojewodztwo()'],['../class_m_p_z_t_1_1_infrustructure_1_1_model_dto_1_1_location_dto.html#af7d082482341cda5be932ae86b45aa16',1,'MPZT.Infrustructure.ModelDto.LocationDto.Wojewodztwo()']]]
-];
